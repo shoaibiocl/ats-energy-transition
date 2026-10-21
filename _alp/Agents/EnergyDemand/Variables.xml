@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Variables>
+	<Variable Class="PlainVariable">
+		<Id>1753110397322</Id>
+		<Name><![CDATA[years_to_transition]]></Name>
+		<X>430</X>
+		<Y>770</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[int]]></Type>
+			<InitialValue Class="CodeValue">
+				<Code><![CDATA[main.yearsToTransition]]></Code>
+			</InitialValue>
+		</Properties>
+	</Variable>
+	<Variable Class="PlainVariable">
+		<Id>1759749606309</Id>
+		<Name><![CDATA[nYears]]></Name>
+		<X>50</X>
+		<Y>810</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[int]]></Type>
+		</Properties>
+	</Variable>
+	<Variable Class="PlainVariable">
+		<Id>1759834006742</Id>
+		<Name><![CDATA[electricityDemand_Hydrogen_MWh]]></Name>
+		<X>50</X>
+		<Y>840</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[double]]></Type>
+		</Properties>
+	</Variable>
+	<Variable Class="PlainVariable">
+		<Id>1761989829854</Id>
+		<Name><![CDATA[years_to_transition_ATS]]></Name>
+		<X>620</X>
+		<Y>770</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[int]]></Type>
+			<InitialValue Class="CodeValue">
+				<Code><![CDATA[main.yearsToTransitionATS]]></Code>
+			</InitialValue>
+		</Properties>
+	</Variable>
+	<Variable Class="PlainVariable">
+		<Id>1762958673840</Id>
+		<Name><![CDATA[remainingTransitionTime]]></Name>
+		<X>50</X>
+		<Y>870</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[double]]></Type>
+			<InitialValue Class="CodeValue">
+				<Code><![CDATA[years_to_transition]]></Code>
+			</InitialValue>
+		</Properties>
+	</Variable>
+	<Variable Class="PlainVariable">
+		<Id>1763636191779</Id>
+		<Name><![CDATA[remainingTransitionTimeATS]]></Name>
+		<X>50</X>
+		<Y>900</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true"
+              Constant="false"
+              AccessType="public"
+              StaticVariable="false">
+			<Type><![CDATA[double]]></Type>
+			<InitialValue Class="CodeValue">
+				<Code><![CDATA[years_to_transition_ATS]]></Code>
+			</InitialValue>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1753117728404</Id>
+		<Name><![CDATA[TotalEnergyDemand]]></Name>
+		<X>510</X>
+		<Y>830</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="true" Array="true">
+			<Formula>0</Formula>
+			<Value>{270.06, 129.85, 444.19, 142.6, 118.33, 52.00, 0, 92.67, 79.42, 6.19, 0, 84.57, 0, 0, 0, 0, 0, 0.00, 0, 0, 0, 18.27, 20.74, 29.95, 1.4, 26.83, 0, 0}</Value>
+			<Color>-4073239</Color>
+			<Array>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>Sectors</ClassName>
+				</Dimension>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>DemandMix</ClassName>
+				</Dimension>
+			</Array>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1753118830657</Id>
+		<Name><![CDATA[annualReduction]]></Name>
+		<X>690</X>
+		<Y>640</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="true" Array="true">
+			<Formula>0</Formula>
+			<Value>{0, 0, 0, 0, 0, 0, 0}</Value>
+			<Color>-4073239</Color>
+			<Array>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>Sectors</ClassName>
+				</Dimension>
+			</Array>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1761385339619</Id>
+		<Name><![CDATA[TotalPrimaryEnergyDemand]]></Name>
+		<X>770</X>
+		<Y>840</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="false" Array="false">
+			<Formula>TotalEnergyDemand.sum()/(1-proportion_ancillary_demand)</Formula>
+			<Value>{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1761510945772</Id>
+		<Name><![CDATA[totalElectricityDemand]]></Name>
+		<Description><![CDATA[This variable considers total electricity demand including the effect of ancillary demand - which is essentially the demand of energgy industry and is expressed as a fixed ratio.]]></Description>
+		<X>500</X>
+		<Y>950</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="false" Array="false">
+			<Formula>TotalEnergyDemand.sum(INDEX_CAN_VARY, Electricity)/(1-proportion_ancillary_demand)</Formula>
+			<Value>0</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1763577516529</Id>
+		<Name><![CDATA[annualHydrogenDemand_TWh]]></Name>
+		<X>920</X>
+		<Y>710</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="false" Array="false">
+			<Formula>annualReduction.get(ATS)*hydrogenSplit_ATS + 
+hydrogenSplit*(annualReduction.get(Society)+
+annualReduction.get(Industry) +
+annualReduction.get(Transport) +
+annualReduction.get(OtherSectors) +
+annualReduction.get(NonEnergy)
+)</Formula>
+			<Value>0</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1753119293845</Id>
+		<Name><![CDATA[hydrogenSplit]]></Name>
+		<X>690</X>
+		<Y>680</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[main.hydrogenSplitOtherSectors]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1753119293843</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1759749329676</Id>
+		<Name><![CDATA[fractionalTransition]]></Name>
+		<X>430</X>
+		<Y>640</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[main.fractionalTransitionOtherSectors]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1759749329674</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1759749826203</Id>
+		<Name><![CDATA[transitionStartYear]]></Name>
+		<X>50</X>
+		<Y>950</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[2]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1759749826201</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1761385226477</Id>
+		<Name><![CDATA[proportion_ancillary_demand]]></Name>
+		<Description><![CDATA[This is to capture the portion of total demand not included in the final consumption demand. It must be aded to the total demand at the end of each year. This includes transfers and others as noted in Dukes tale 1.1 alternate units. ]]></Description>
+		<X>770</X>
+		<Y>940</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[.23]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1761385226475</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1761989996367</Id>
+		<Name><![CDATA[fractionalTransition_ATS]]></Name>
+		<X>430</X>
+		<Y>680</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[main.fractionalTransitionATS]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1761989996365</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+	<Variable Class="Parameter">
+		<Id>1761992942785</Id>
+		<Name><![CDATA[hydrogenSplit_ATS]]></Name>
+		<X>690</X>
+		<Y>720</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+			<Type><![CDATA[double]]></Type>
+			<UnitType>NONE</UnitType>
+			<SdArray>false</SdArray>
+			<DefaultValue Class="CodeValue">
+				<Code><![CDATA[main.hydrogenSplitATS]]></Code>
+			</DefaultValue>
+			<ParameterEditor>
+				<Id>1761992942783</Id>
+				<EditorContolType>TEXT_BOX</EditorContolType>
+				<MinSliderValue>0</MinSliderValue>
+				<MaxSliderValue>100</MaxSliderValue>
+				<DelimeterType>NO_DELIMETER</DelimeterType>
+			</ParameterEditor>
+		</Properties>
+	</Variable>
+</Variables>

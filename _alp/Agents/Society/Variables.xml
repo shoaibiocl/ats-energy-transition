@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Variables>
+	<Variable Class="AuxVariable">
+		<Id>1759913158053</Id>
+		<Name><![CDATA[passengerDemandRate]]></Name>
+		<X>340</X>
+		<Y>160</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="false" Array="false">
+			<Formula>ramp(1000, 1, 30)</Formula>
+			<Value>0</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="StockVariable">
+		<Id>1759913196169</Id>
+		<Name><![CDATA[demand]]></Name>
+		<X>610</X>
+		<Y>230</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties Array="false">
+			<EquationStyle>classic</EquationStyle>
+			<Width>20</Width>
+			<Height>20</Height>
+			<InitialValue>0</InitialValue>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="Flow">
+		<Id>1759913201358</Id>
+		<Name><![CDATA[passengerDemand]]></Name>
+		<X>330</X>
+		<Y>230</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties TargetId="1759913196169"
+              External="false"
+              Constant="false"
+              Array="false">
+			<Formula>passengerDemandRate</Formula>
+			<Color>-4073239</Color>
+			<ValveIndex>1</ValveIndex>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>110</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>280</X>
+					<Y>0</Y>
+				</Point>
+			</Points>
+		</Properties>
+	</Variable>
+</Variables>

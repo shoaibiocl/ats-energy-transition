@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActiveObjectClass>
+	<Id>1758568600274</Id>
+	<Name><![CDATA[HydrogenProducer_PEM]]></Name>
+	<StartupCode><![CDATA[set_capexRate_per_kW(base_capexRate_per_kW);]]></StartupCode>
+	<Generic>false</Generic>
+	<GenericParameter>
+		<Id>1758568600269</Id>
+		<Name><![CDATA[1758568600269]]></Name>
+		<GenericParameterValue Class="CodeValue">
+			<Code><![CDATA[T extends Agent]]></Code>
+		</GenericParameterValue>
+		<GenericParameterLabel>Generic parameter:</GenericParameterLabel>
+	</GenericParameter>
+	<FlowChartsUsage>ENTITY</FlowChartsUsage>
+	<SamplesToKeep>100</SamplesToKeep>
+	<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+	<ElementsLimitValue>100</ElementsLimitValue>
+	<MakeDefaultViewArea>true</MakeDefaultViewArea>
+	<SceneGridColor/>
+	<SceneBackgroundColor>-4144960</SceneBackgroundColor>
+	<EnvironmentResourceRef/>
+	<EnvironmentType>NONE</EnvironmentType>
+	<EnvironmentRotationX>0</EnvironmentRotationX>
+	<EnvironmentRotationY>0</EnvironmentRotationY>
+	<EnvironmentRotationZ>0</EnvironmentRotationZ>
+	<EnvironmentIntensity>1</EnvironmentIntensity>
+	<AgentProperties>
+		<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+		<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+		<RotateAnimationVertically>false</RotateAnimationVertically>
+		<VelocityCode Class="CodeUnitValue">
+			<Code><![CDATA[10]]></Code>
+			<Unit Class="SpeedUnits">MPS</Unit>
+		</VelocityCode>
+		<MessageType>Object</MessageType>
+		<PhysicalLength Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalLength>
+		<PhysicalWidth Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalWidth>
+		<PhysicalHeight Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalHeight>
+	</AgentProperties>
+	<EnvironmentProperties>
+		<EnableSteps>false</EnableSteps>
+		<StepDurationCode Class="CodeUnitValue">
+			<Code><![CDATA[1.0]]></Code>
+			<Unit Class="TimeUnits">SECOND</Unit>
+		</StepDurationCode>
+		<SpaceType>CONTINUOUS</SpaceType>
+		<WidthCode>500</WidthCode>
+		<HeightCode>500</HeightCode>
+		<ZHeightCode>0</ZHeightCode>
+		<ColumnsCountCode>100</ColumnsCountCode>
+		<RowsCountCode>100</RowsCountCode>
+		<NeigborhoodType>MOORE</NeigborhoodType>
+		<LayoutType>USER_DEF</LayoutType>
+		<NetworkType>USER_DEF</NetworkType>
+		<ConnectionsPerAgentCode>2</ConnectionsPerAgentCode>
+		<ConnectionsRangeCode>50</ConnectionsRangeCode>
+		<NeighborLinkFractionCode>0.95</NeighborLinkFractionCode>
+		<MCode>10</MCode>
+		<LineStyle>SOLID</LineStyle>
+		<LineWidth>1</LineWidth>
+		<LineColor>-16777216</LineColor>
+		<LineZOrder>UNDER_AGENTS</LineZOrder>
+		<LineArrow>NONE</LineArrow>
+		<LineArrowPosition>END</LineArrowPosition>
+	</EnvironmentProperties>
+	<DatasetsCreationProperties>
+		<AutoCreate>true</AutoCreate>
+		<Id>1758568600271</Id>
+		<OccurrenceAtTime>true</OccurrenceAtTime>
+		<OccurrenceDate>1758528000000</OccurrenceDate>
+		<OccurrenceTime Class="CodeUnitValue">
+			<Code><![CDATA[0]]></Code>
+			<Unit Class="TimeUnits">YEAR</Unit>
+		</OccurrenceTime>
+		<RecurrenceCode Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="TimeUnits">YEAR</Unit>
+		</RecurrenceCode>
+	</DatasetsCreationProperties>
+	<ScaleRuler>
+		<Id>1758568600270</Id>
+		<Name><![CDATA[scale]]></Name>
+		<X>0</X>
+		<Y>-150</Y>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>false</PresentationFlag>
+		<ShowLabel>false</ShowLabel>
+		<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+		<Length>100</Length>
+		<Rotation>0</Rotation>
+		<ScaleType>BASED_ON_LENGTH</ScaleType>
+		<ModelLength>10</ModelLength>
+		<LengthUnits>METER</LengthUnits>
+		<Scale>10</Scale>
+		<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+	</ScaleRuler>
+	<CurrentLevel>1758568600320</CurrentLevel>
+	<Variables xmlns:al="http://anylogic.com"/>
+	<StatechartElements>
+		<StatechartElement Class="State" ParentState="ROOT_NODE">
+			<Id>1762173641462</Id>
+			<Name><![CDATA[notOperational]]></Name>
+			<X>510</X>
+			<Y>140</Y>
+			<Label>
+				<X>10</X>
+				<Y>10</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<Properties Width="170" Height="60">
+				<ExitAction>//1. Estimate total demand for hydrogen across all the sectors.
+final double TWH_TO_KG = 25_400_000;
+double totalHydrogenDemand_TWh = 0;
+totalHydrogenDemand_TWh = main.energyDemand.TotalEnergyDemand.sum(INDEX_CAN_VARY, Hydrogen);
+// Convert the final TWh value to kg.
+double totalHydrogenDemand_kg = totalHydrogenDemand_TWh * TWH_TO_KG;
+demand_kg = totalHydrogenDemand_kg;
+
+//2. Estimate total production capacity
+double maxProduction = getMaxProduction();
+annualCapacity_kg = maxProduction;
+annualCapacity_TWh = (annualCapacity_kg)/(h2_HHV_to_kg_conversion*1000000); 
+
+// 3. Estimate how much hydrogen needs to be produced.
+annualProduction_kg = Math.min(demand_kg, maxProduction);
+
+// 4. Calculate electricity reuirement 
+double production_MWh = annualProduction_kg / h2_HHV_to_kg_conversion;
+annualElectricityDemand_MWh = production_MWh / efficiency;</ExitAction>
+				<FillColor>-10496</FillColor>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="State" ParentState="ROOT_NODE">
+			<Id>1762173655677</Id>
+			<Name><![CDATA[operational]]></Name>
+			<X>510</X>
+			<Y>240</Y>
+			<Label>
+				<X>10</X>
+				<Y>10</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<Properties Width="170" Height="280">
+				<EntryAction>//traceln("Initiatlisation executed");
+final double TWH_TO_KG = 25400000;
+//double totalHydrogenDemand_TWh = 0;
+//totalHydrogenDemand_TWh = main.energyDemand.TotalEnergyDemand.sum(INDEX_CAN_VARY, Hydrogen);
+//traceln("Hydrogen agent: Demand for hydrogen "+totalHydrogenDemand_TWh);
+// Convert the final TWh value to kg.
+//double totalHydrogenDemand_kg = totalHydrogenDemand_TWh * TWH_TO_KG;
+//demand_kg = totalHydrogenDemand_kg;
+
+currentCapacity_kW_H2 = initialCapacity_kW_H2;
+currentCapital = initialCapital;
+
+double maxProduction = getMaxProduction();
+annualCapacity_kg = maxProduction;
+
+annualProduction_kg = Math.min(demand_kg, maxProduction);
+//traceln("Annual demand : "+demand_kg);
+//traceln("Annual production kg: "+annualProduction_kg);
+annualProduction_MWh_H2 = annualProduction_kg/25.4; 
+annualCapacity_TWh = (annualCapacity_kg)/(25.4*1000000); 
+//double totalDemand_kg = demand_kg;
+
+// CALCULATE AND STORE ANNUAL ELECTRICITY CONSUMPTION
+double production_MWh = annualProduction_kg / h2_HHV_to_kg_conversion;
+annualElectricityDemand_MWh = production_MWh / efficiency;
+//traceln("Annual electricity demand: "+annualElectricityDemand_MWh);
+//assuming for the first year electricity demanded is supplied. 
+allocated_electricity_MW = annualElectricityDemand_MWh;
+
+</EntryAction>
+				<FillColor/>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="State"
+                     ParentState="operational"
+                     ParentStateId="1762173655677">
+			<Id>1762184244760</Id>
+			<Name><![CDATA[demandGen]]></Name>
+			<X>530</X>
+			<Y>300</Y>
+			<Label>
+				<X>5</X>
+				<Y>20</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<Properties Width="120" Height="80">
+				<FillColor>-10496</FillColor>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="State"
+                     ParentState="operational"
+                     ParentStateId="1762173655677">
+			<Id>1762184300675</Id>
+			<Name><![CDATA[revenueCal]]></Name>
+			<X>530</X>
+			<Y>440</Y>
+			<Label>
+				<X>10</X>
+				<Y>10</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<Properties Width="120" Height="50">
+				<EntryAction>double allocatedElectricity_MWh = allocated_electricity_MW;
+//using the formula, update how much hydrogen actually produced based on allocated electricity
+//1 MWh of electricity X efficiency X 25.4 kg H2
+actualProduction_kg = allocatedElectricity_MWh * efficiency* h2_HHV_to_kg_conversion;
+//traceln("actual production: "+actualProduction_kg);
+
+//update electricity price
+set_electricityPrice_per_MWh(main.energyCoordinator.electricityPrice);
+//update hydrogen price
+hydrogenPrice_per_kg = main.energyCoordinator.hydrogenPrice;
+
+double cost = getAnnualCostForHydrogenPriceCalculation(annualProduction_kg);
+//update data set 
+hydrogen_annualCost_dataset.add(cost);
+// Update cost. Setting if the production is zero then the base cost is 7. 
+if (actualProduction_kg &gt; 0) {
+    cost_per_kg = ((cost / actualProduction_kg) &gt; 0) ? (cost / actualProduction_kg) : 7;
+   // traceln("Cost per kg: "+cost_per_kg);
+} //else {
+    //cost_per_kg = 0;
+//}
+
+//updating base cost of hydrogen with the energy cordinator
+main.energyCoordinator.hydrogenBasePrice = cost_per_kg;
+
+
+// CALCULATE FINANCIALS
+double revenue = getAnnualRevenue(actualProduction_kg);
+double interestEarned = limitMin(0, currentCapital) * 
+capitalInterestRate;
+double cost1 = getAnnualCostForProfitCalculation(annualProduction_kg);
+double profit = (revenue + interestEarned) - cost1;
+hydrogen_annualRevenue_dataset.add(revenue);
+//double cost = getAnnualCost(actualProduction_kg);
+
+//traceln("Year :"+time(YEAR)+" Cost: "+cost+" revenue: "+revenue);
+//traceln("Current capital: "+currentCapital);
+currentCapital += profit;
+//traceln("Current capital: "+currentCapital);
+
+// === 4. MAKE NEW EXPANSION DECISION ===
+//traceln("******************");
+//traceln("Calling expansion function: "+time(YEAR));
+expandCapacity2();
+//traceln("******************");
+// 5. UPDATE LOANS
+for (Loan loan : loanList) {
+    loan.age_years++;
+}
+loanList.removeIf(loan -&gt; loan.age_years &gt;= loan.term_years);
+// UPDATE EQUITY INVESTMENTS (EVERY YEAR)
+// Loop through each active equity investment and decrease its remaining periods by one.
+for (CapitalInvestment investment : equityInvestments) {
+    investment.periodsRemaining--;
+}
+// After aging them, remove any investments from the list that have been fully amortized.
+equityInvestments.removeIf(investment -&gt; investment.periodsRemaining &lt;= 0);
+
+//reducing annual capex costs
+annualCostReduction_LR();
+
+// === 6. LOG SUMMARY ===
+//traceln("Year " + time(YEAR) + " Summary: Capital: £" + currentCapital + ", Production: " + (int)annualProduction_kg + " kg, Cost/kg: £" + String.format("%.2f", cost_per_kg));
+//traceln("----------------------------------------------------");
+</EntryAction>
+				<FillColor>-10496</FillColor>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
+			<Id>1762173638230</Id>
+			<Name><![CDATA[statechart]]></Name>
+			<X>550</X>
+			<Y>100</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>40</Y>
+				</Point>
+			</Points>
+			<Properties Target="1762173641462"/>
+		</StatechartElement>
+		<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+			<Id>1762173653074</Id>
+			<Name><![CDATA[transition]]></Name>
+			<X>550</X>
+			<Y>200</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>40</Y>
+				</Point>
+			</Points>
+			<IconOffset>20.0</IconOffset>
+			<Properties Source="1762173641462" Target="1762173655677" Trigger="message">
+				<Timeout Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</Timeout>
+				<Condition>demand_kg &gt; 0</Condition>
+				<Rate Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="RateUnits">PER_MONTH</Unit>
+				</Rate>
+				<MessageType>Object</MessageType>
+				<DefaultTransition>true</DefaultTransition>
+				<FilterType>equalsTo</FilterType>
+				<EqualsExpression>"Transition started"</EqualsExpression>
+				<SatisfiesExpression>true</SatisfiesExpression>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="Transition"
+                     ParentState="notOperational"
+                     ParentStateId="1762173641462">
+			<Id>1762173684863</Id>
+			<Name><![CDATA[transition1]]></Name>
+			<X>660</X>
+			<Y>150</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>-10</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>50</Y>
+				</Point>
+			</Points>
+			<IconOffset>20.0</IconOffset>
+			<Properties Source="1762173641462" Target="1762173641462" Trigger="timeout">
+				<Timeout Class="CodeUnitValue">
+					<Code><![CDATA[2]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</Timeout>
+				<Condition>true</Condition>
+				<Rate Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="RateUnits">PER_MONTH</Unit>
+				</Rate>
+				<MessageType>Object</MessageType>
+				<DefaultTransition>true</DefaultTransition>
+				<FilterType>unconditionally</FilterType>
+				<EqualsExpression>"text"</EqualsExpression>
+				<SatisfiesExpression>true</SatisfiesExpression>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="Transition"
+                     ParentState="demandGen"
+                     ParentStateId="1762184244760">
+			<Id>1762173734140</Id>
+			<Name><![CDATA[transition2]]></Name>
+			<Description><![CDATA[The demand updated message arrives from the demnd agent after it has aggregated and calculated all the demand. ]]></Description>
+			<X>530</X>
+			<Y>350</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>60</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>60</X>
+					<Y>30</Y>
+				</Point>
+			</Points>
+			<IconOffset>20.0</IconOffset>
+			<Properties Source="1762184244760" Target="1762184244760" Trigger="message">
+				<Action>
+//1. Estimate total demand for hydrogen across all the sectors.
+final double TWH_TO_KG = 25400000;
+double totalHydrogenDemand_TWh = 0;
+totalHydrogenDemand_TWh = main.energyDemand.TotalEnergyDemand.sum(INDEX_CAN_VARY, Hydrogen);
+// Convert the final TWh value to kg.
+double totalHydrogenDemand_kg = totalHydrogenDemand_TWh * TWH_TO_KG;
+demand_kg = totalHydrogenDemand_kg;
+
+//2. Estimate total production capacity
+double maxProduction = getMaxProduction();
+annualCapacity_kg = maxProduction;
+annualCapacity_TWh = (annualCapacity_kg)/(h2_HHV_to_kg_conversion*1000000); 
+
+// 3. Estimate how much hydrogen needs to be produced.
+annualProduction_kg = Math.min(demand_kg, maxProduction);
+
+// 4. Calculate electricity reuirement 
+double production_MWh = annualProduction_kg / h2_HHV_to_kg_conversion;
+annualElectricityDemand_MWh = production_MWh / efficiency;
+
+send("Allocate", main.energyCoordinator);
+</Action>
+				<Timeout Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</Timeout>
+				<Condition>true</Condition>
+				<Rate Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="RateUnits">PER_MONTH</Unit>
+				</Rate>
+				<MessageType>Object</MessageType>
+				<DefaultTransition>true</DefaultTransition>
+				<FilterType>equalsTo</FilterType>
+				<EqualsExpression>"Demand updated"</EqualsExpression>
+				<SatisfiesExpression>true</SatisfiesExpression>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="InitialStatePointer"
+                     ParentState="operational"
+                     ParentStateId="1762173655677">
+			<Id>1762184254751</Id>
+			<Name><![CDATA[initialState]]></Name>
+			<X>590</X>
+			<Y>270</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>30</Y>
+				</Point>
+			</Points>
+			<Properties Target="1762184244760"/>
+		</StatechartElement>
+		<StatechartElement Class="Transition"
+                     ParentState="operational"
+                     ParentStateId="1762173655677">
+			<Id>1762184306691</Id>
+			<Name><![CDATA[transition3]]></Name>
+			<Description><![CDATA[This message comes from the Cordinator agent. ]]></Description>
+			<X>540</X>
+			<Y>380</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>60</Y>
+				</Point>
+			</Points>
+			<IconOffset>30.0</IconOffset>
+			<Properties Source="1762184244760" Target="1762184300675" Trigger="message">
+				<Timeout Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</Timeout>
+				<Condition>true</Condition>
+				<Rate Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="RateUnits">PER_MONTH</Unit>
+				</Rate>
+				<MessageType>Object</MessageType>
+				<DefaultTransition>true</DefaultTransition>
+				<FilterType>equalsTo</FilterType>
+				<EqualsExpression>"Allocated"</EqualsExpression>
+				<SatisfiesExpression>true</SatisfiesExpression>
+			</Properties>
+		</StatechartElement>
+		<StatechartElement Class="Transition"
+                     ParentState="operational"
+                     ParentStateId="1762173655677">
+			<Id>1762184309584</Id>
+			<Name><![CDATA[transition4]]></Name>
+			<X>620</X>
+			<Y>440</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>0</X>
+					<Y>-60</Y>
+				</Point>
+			</Points>
+			<IconOffset>20.0</IconOffset>
+			<Properties Source="1762184300675" Target="1762184244760" Trigger="timeout">
+				<Timeout Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</Timeout>
+				<Condition>true</Condition>
+				<Rate Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="RateUnits">PER_MONTH</Unit>
+				</Rate>
+				<MessageType>Object</MessageType>
+				<DefaultTransition>true</DefaultTransition>
+				<FilterType>unconditionally</FilterType>
+				<EqualsExpression>"text"</EqualsExpression>
+				<SatisfiesExpression>true</SatisfiesExpression>
+			</Properties>
+		</StatechartElement>
+	</StatechartElements>
+	<DynamicEvents xmlns:al="http://anylogic.com"/>
+	<Functions xmlns:al="http://anylogic.com"/>
+	<AnalysisData>
+		<DataSet>
+			<Id>1762165956252</Id>
+			<Name><![CDATA[hydrogen_maxProductionCapacity_dataset]]></Name>
+			<X>30</X>
+			<Y>470</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1762165956250</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>annualCapacity_kg</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1762166060137</Id>
+			<Name><![CDATA[hydrogen_actualProduction_dataset]]></Name>
+			<X>30</X>
+			<Y>490</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1762166060135</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>actualProduction_kg</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1762167681412</Id>
+			<Name><![CDATA[hydrogen_cashOnHand_dataset]]></Name>
+			<X>30</X>
+			<Y>530</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1762167681410</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">DAY</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>currentCapital</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1762365313814</Id>
+			<Name><![CDATA[hydrogen_demand_dataset]]></Name>
+			<X>30</X>
+			<Y>510</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1762365313812</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>demand_kg</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1762423056334</Id>
+			<Name><![CDATA[hydrogen_capacityUtilisation_dataset]]></Name>
+			<X>30</X>
+			<Y>420</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1762423056332</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762502400000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>xidz(actualProduction_kg, annualProduction_kg, 0)</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763027094549</Id>
+			<Name><![CDATA[hydrogen_averageCapacityUtilisation_dataset]]></Name>
+			<X>30</X>
+			<Y>450</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763027094547</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762502400000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[13]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>hydrogen_averageCapacityUtilisation_dataset.getYMean()</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763027206240</Id>
+			<Name><![CDATA[hydrogen_capacityExpansions_dataset]]></Name>
+			<X>30</X>
+			<Y>780</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763027206238</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1763107200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763027893027</Id>
+			<Name><![CDATA[hydrogen_cost_dataset]]></Name>
+			<X>30</X>
+			<Y>550</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763027893025</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>cost_per_kg</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763038452451</Id>
+			<Name><![CDATA[hydrogen_annualCost_dataset]]></Name>
+			<X>30</X>
+			<Y>570</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763038452449</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1763107200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763038619912</Id>
+			<Name><![CDATA[hydrogen_annualRevenue_dataset]]></Name>
+			<X>30</X>
+			<Y>590</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763038619910</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1763107200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763481449182</Id>
+			<Name><![CDATA[hydrogen_loanCost_dataset]]></Name>
+			<X>30</X>
+			<Y>610</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763481449180</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763481452450</Id>
+			<Name><![CDATA[hydrogen_FixedOpexCost_dataset]]></Name>
+			<X>30</X>
+			<Y>660</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763481452448</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763481456660</Id>
+			<Name><![CDATA[hydrogen_VariableOpexCost_dataset]]></Name>
+			<X>30</X>
+			<Y>690</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763481456658</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763481459736</Id>
+			<Name><![CDATA[hydrogen_CapexCost_dataset]]></Name>
+			<X>30</X>
+			<Y>720</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763481459734</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763481636907</Id>
+			<Name><![CDATA[hydrogen_ElectricityCost_dataset]]></Name>
+			<X>30</X>
+			<Y>750</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>false</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763481636905</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1762243200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+		<DataSet>
+			<Id>1763641358630</Id>
+			<Name><![CDATA[hydrogen_CapexPerKw_dataset]]></Name>
+			<X>30</X>
+			<Y>810</Y>
+			<Label>
+				<X>15</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<AutoUpdate>true</AutoUpdate>
+			<RecurrenceProperties>
+				<Id>1763641358628</Id>
+				<OccurrenceAtTime>true</OccurrenceAtTime>
+				<OccurrenceDate>1763107200000</OccurrenceDate>
+				<OccurrenceTime Class="CodeUnitValue">
+					<Code><![CDATA[0]]></Code>
+					<Unit Class="TimeUnits">MONTH</Unit>
+				</OccurrenceTime>
+				<RecurrenceCode Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="TimeUnits">YEAR</Unit>
+				</RecurrenceCode>
+			</RecurrenceProperties>
+			<FreezeXAxis>true</FreezeXAxis>
+			<VerticalAxisExpression>capexRate_per_kW</VerticalAxisExpression>
+			<SamplesToKeep>100</SamplesToKeep>
+		</DataSet>
+	</AnalysisData>
+	<ContainerLinks>
+		<ContainerLink>
+			<Id>1758568671237</Id>
+			<Name><![CDATA[main]]></Name>
+			<X>50</X>
+			<Y>-100</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<ActiveObjectClass>
+				<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+				<ClassName>Main</ClassName>
+			</ActiveObjectClass>
+		</ContainerLink>
+	</ContainerLinks>
+	<Presentation>
+		<Level>
+			<Id>1758568600320</Id>
+			<Name><![CDATA[level]]></Name>
+			<X>0</X>
+			<Y>0</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>true</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+			<Z>0</Z>
+			<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+			<Presentation xmlns:al="http://anylogic.com"/>
+		</Level>
+	</Presentation>
+</ActiveObjectClass>

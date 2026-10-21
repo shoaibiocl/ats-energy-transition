@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DynamicEvents>
+	<DynamicEventClass>
+		<Id>1758657828349</Id>
+		<Name><![CDATA[hydrogenCapacityExpansion]]></Name>
+		<X>30</X>
+		<Y>360</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Action xmlns:al="http://anylogic.com"/>
+	</DynamicEventClass>
+</DynamicEvents>

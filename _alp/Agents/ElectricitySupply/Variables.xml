@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Variables>
+	<Variable Class="AuxVariable">
+		<Id>1752594884639</Id>
+		<Name><![CDATA[totalElectricitySupply]]></Name>
+		<Description><![CDATA[This gives value in TwH.]]></Description>
+		<X>550</X>
+		<Y>150</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="false" Array="false">
+			<Formula>
+(Capacity.get(Solar)*availabilityFactor.get(Solar)*(8760)/(1000000) + 
+(Capacity.get(Coal)*availabilityFactor.get(Coal) +
+Capacity.get(NaturalGas)*availabilityFactor.get(NaturalGas) + 
+Capacity.get(OffshoreWind)*availabilityFactor.get(OffshoreWind) +
+Capacity.get(OnshoreWind)*availabilityFactor.get(OnshoreWind) + 
+Capacity.get(Hydro)*availabilityFactor.get(Hydro) +
+Capacity.get(Nuclear)*availabilityFactor.get(Nuclear) +
+Capacity.get(Wave)*availabilityFactor.get(Wave) + 
+Capacity.get(Biomass)*availabilityFactor.get(Biomass) +
+Capacity.get(Others)*availabilityFactor.get(Others))*(8760)/(1000000))*(1+capacityMultiplier)</Formula>
+			<Value>0</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1752594905475</Id>
+		<Name><![CDATA[availabilityFactor]]></Name>
+		<X>380</X>
+		<Y>70</Y>
+		<Label>
+			<X>-170</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="true" Array="true">
+			<Formula>0</Formula>
+			<Value>{1, 1, 1, 1, 1, .55, .43, .43, .17, .33, 1}</Value>
+			<Color>-4073239</Color>
+			<Array>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>EnergySources</ClassName>
+				</Dimension>
+			</Array>
+		</Properties>
+	</Variable>
+	<Variable Class="AuxVariable">
+		<Id>1792572179516</Id>
+		<Name><![CDATA[capacityMultiplier]]></Name>
+		<X>420</X>
+		<Y>280</Y>
+		<Label>
+			<X>0</X>
+			<Y>-20</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties External="false" Constant="true" Array="false">
+			<Formula>0</Formula>
+			<Value>main.capacityMultiplier</Value>
+			<Color>-4073239</Color>
+		</Properties>
+	</Variable>
+	<Variable Class="StockVariable">
+		<Id>1751541098391</Id>
+		<Name><![CDATA[Capacity]]></Name>
+		<X>310</X>
+		<Y>160</Y>
+		<Label>
+			<X>-30</X>
+			<Y>-40</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties Array="true">
+			<EquationStyle>classic</EquationStyle>
+			<Width>40</Width>
+			<Height>40</Height>
+			<InitialValue>{3364.82424, 34344.90677, 1214.937455, 6848, 8193.385546, 1892.07216, 15728.66515, 26734.675, 17156.80237, 22.398, 4177}</InitialValue>
+			<Color>-4073239</Color>
+			<Array>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>EnergySources</ClassName>
+				</Dimension>
+				<CustomExpression>
+					<Id>1751552866996</Id>
+					<Coordinate>
+						<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+						<ClassName>EnergySources</ClassName>
+					</Coordinate>
+				</CustomExpression>
+			</Array>
+		</Properties>
+	</Variable>
+	<Variable Class="Flow">
+		<Id>1752501081185</Id>
+		<Name><![CDATA[flow]]></Name>
+		<X>50</X>
+		<Y>160</Y>
+		<Label>
+			<X>-30</X>
+			<Y>-35</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Properties TargetId="1751541098391"
+              External="false"
+              Constant="false"
+              Array="true">
+			<Formula>0</Formula>
+			<Color>-4073239</Color>
+			<Array>
+				<Dimension>
+					<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+					<ClassName>EnergySources</ClassName>
+				</Dimension>
+			</Array>
+			<ValveIndex>1</ValveIndex>
+			<Points>
+				<Point>
+					<X>0</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>110</X>
+					<Y>0</Y>
+				</Point>
+				<Point>
+					<X>260</X>
+					<Y>0</Y>
+				</Point>
+			</Points>
+		</Properties>
+	</Variable>
+</Variables>

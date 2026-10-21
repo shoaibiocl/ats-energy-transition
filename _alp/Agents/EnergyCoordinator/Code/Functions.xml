@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+	<Function AccessType="public" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1752825159842</Id>
+		<Name><![CDATA[getDemand]]></Name>
+		<Description><![CDATA[The function when invoked retrieves demand for electricity and hydrogen from energy demand agent.]]></Description>
+		<X>50</X>
+		<Y>1010</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1752831750595</Id>
+		<Name><![CDATA[getSupply]]></Name>
+		<Description><![CDATA[This when invoked sets the available supply of hydrogen and electricity from the energy supply agent.]]></Description>
+		<X>50</X>
+		<Y>970</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1752832413727</Id>
+		<Name><![CDATA[electricity_priority_allocation]]></Name>
+		<Description><![CDATA[for (int i = 0; i <= Sectors.size(); i++){
+	double demand = sectorDemand.get(i, Electricity);
+	if (availableElectricity >= demand){
+		allocated = demand;
+		ratio = allocated/demand;
+		sectorAllocated.set(allocated, i, Electricity);
+		sectorProportionAllocated.set(ratio, i, Electricity);
+		availableElectricity -= allocated;
+	} 
+	
+	
+}
+]]></Description>
+		<X>50</X>
+		<Y>880</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1753099872218</Id>
+		<Name><![CDATA[hydrogen_priority_allocation]]></Name>
+		<Description><![CDATA[for (int i = 0; i <= Sectors.size(); i++){
+	double demand = sectorDemand.get(i, Electricity);
+	if (availableElectricity >= demand){
+		allocated = demand;
+		ratio = allocated/demand;
+		sectorAllocated.set(allocated, i, Electricity);
+		sectorProportionAllocated.set(ratio, i, Electricity);
+		availableElectricity -= allocated;
+	} 
+	
+	
+}
+]]></Description>
+		<X>50</X>
+		<Y>800</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1758703662672</Id>
+		<Name><![CDATA[hydrogen_proportional_allocation]]></Name>
+		<X>50</X>
+		<Y>840</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1758704255858</Id>
+		<Name><![CDATA[electricity_proportional_allocation]]></Name>
+		<Description><![CDATA[for (int i = 0; i <= Sectors.size(); i++){
+	double demand = sectorDemand.get(i, Electricity);
+	if (availableElectricity >= demand){
+		allocated = demand;
+		ratio = allocated/demand;
+		sectorAllocated.set(allocated, i, Electricity);
+		sectorProportionAllocated.set(ratio, i, Electricity);
+		availableElectricity -= allocated;
+	} 
+	
+	
+}
+]]></Description>
+		<X>50</X>
+		<Y>910</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+	<Function AccessType="default" StaticFunction="false">
+		<ReturnModificator>VOID</ReturnModificator>
+		<ReturnType>double</ReturnType>
+		<Id>1792523273026</Id>
+		<Name><![CDATA[initActiveBaseLF]]></Name>
+		<X>50</X>
+		<Y>1050</Y>
+		<Label>
+			<X>10</X>
+			<Y>0</Y>
+		</Label>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>true</PresentationFlag>
+		<ShowLabel>true</ShowLabel>
+		<Body xmlns:al="http://anylogic.com"/>
+	</Function>
+</Functions>

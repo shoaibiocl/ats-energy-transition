@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActiveObjectClass>
+	<Id>1759844514969</Id>
+	<Name><![CDATA[Airlines]]></Name>
+	<StartupCode><![CDATA[AircraftList.clear();
+// number of aircraft to create
+int n = 10;
+// set max lifetime for all aircraft
+int lifetime = 25;
+// loop to create aircraft
+for (int i = 1; i <= n; i++) {
+    // random number for distance category
+    double r = random();
+    String distanceType;
+    if (r < 0.5) {
+        distanceType = "short";      // 50% chance
+    } else if (r < 0.8) {
+        distanceType = "medium";     // 30% chance
+    } else {
+        distanceType = "long";       // 20% chance
+    }
+    // random age between 0 and lifetime - 1
+    int age = (int) uniform(0, lifetime);
+    // create aircraft and add to list
+    AircraftList.add(new Aircraft("AC" + numAircraft, distanceType, "Kerosene", age, lifetime));
+	numAircraft ++;
+	updateFleetStock(distanceType, "Kerosene", "Add");
+}
+
+// print confirmation
+//trace("Generated " + AircraftList.size() + " kerosene aircraft.");
+]]></StartupCode>
+	<Generic>false</Generic>
+	<GenericParameter>
+		<Id>1759844514974</Id>
+		<Name><![CDATA[1759844514974]]></Name>
+		<GenericParameterValue Class="CodeValue">
+			<Code><![CDATA[T extends Agent]]></Code>
+		</GenericParameterValue>
+		<GenericParameterLabel>Generic parameter:</GenericParameterLabel>
+	</GenericParameter>
+	<FlowChartsUsage>ENTITY</FlowChartsUsage>
+	<SamplesToKeep>100</SamplesToKeep>
+	<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+	<ElementsLimitValue>100</ElementsLimitValue>
+	<MakeDefaultViewArea>true</MakeDefaultViewArea>
+	<SceneGridColor/>
+	<SceneBackgroundColor>-4144960</SceneBackgroundColor>
+	<EnvironmentResourceRef/>
+	<EnvironmentType>NONE</EnvironmentType>
+	<EnvironmentRotationX>0</EnvironmentRotationX>
+	<EnvironmentRotationY>0</EnvironmentRotationY>
+	<EnvironmentRotationZ>0</EnvironmentRotationZ>
+	<EnvironmentIntensity>1</EnvironmentIntensity>
+	<AgentProperties>
+		<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+		<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+		<RotateAnimationVertically>false</RotateAnimationVertically>
+		<VelocityCode Class="CodeUnitValue">
+			<Code><![CDATA[10]]></Code>
+			<Unit Class="SpeedUnits">MPS</Unit>
+		</VelocityCode>
+		<MessageType>Object</MessageType>
+		<PhysicalLength Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalLength>
+		<PhysicalWidth Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalWidth>
+		<PhysicalHeight Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="LengthUnits">METER</Unit>
+		</PhysicalHeight>
+	</AgentProperties>
+	<EnvironmentProperties>
+		<EnableSteps>false</EnableSteps>
+		<StepDurationCode Class="CodeUnitValue">
+			<Code><![CDATA[1.0]]></Code>
+			<Unit Class="TimeUnits">SECOND</Unit>
+		</StepDurationCode>
+		<SpaceType>CONTINUOUS</SpaceType>
+		<WidthCode>500</WidthCode>
+		<HeightCode>500</HeightCode>
+		<ZHeightCode>0</ZHeightCode>
+		<ColumnsCountCode>100</ColumnsCountCode>
+		<RowsCountCode>100</RowsCountCode>
+		<NeigborhoodType>MOORE</NeigborhoodType>
+		<LayoutType>USER_DEF</LayoutType>
+		<NetworkType>USER_DEF</NetworkType>
+		<ConnectionsPerAgentCode>2</ConnectionsPerAgentCode>
+		<ConnectionsRangeCode>50</ConnectionsRangeCode>
+		<NeighborLinkFractionCode>0.95</NeighborLinkFractionCode>
+		<MCode>10</MCode>
+		<LineStyle>SOLID</LineStyle>
+		<LineWidth>1</LineWidth>
+		<LineColor>-16777216</LineColor>
+		<LineZOrder>UNDER_AGENTS</LineZOrder>
+		<LineArrow>NONE</LineArrow>
+		<LineArrowPosition>END</LineArrowPosition>
+	</EnvironmentProperties>
+	<DatasetsCreationProperties>
+		<AutoCreate>true</AutoCreate>
+		<Id>1759844514968</Id>
+		<OccurrenceAtTime>true</OccurrenceAtTime>
+		<OccurrenceDate>1759910400000</OccurrenceDate>
+		<OccurrenceTime Class="CodeUnitValue">
+			<Code><![CDATA[0]]></Code>
+			<Unit Class="TimeUnits">YEAR</Unit>
+		</OccurrenceTime>
+		<RecurrenceCode Class="CodeUnitValue">
+			<Code><![CDATA[1]]></Code>
+			<Unit Class="TimeUnits">YEAR</Unit>
+		</RecurrenceCode>
+	</DatasetsCreationProperties>
+	<ScaleRuler>
+		<Id>1759844514972</Id>
+		<Name><![CDATA[scale]]></Name>
+		<X>0</X>
+		<Y>-150</Y>
+		<PublicFlag>false</PublicFlag>
+		<PresentationFlag>false</PresentationFlag>
+		<ShowLabel>false</ShowLabel>
+		<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+		<Length>100</Length>
+		<Rotation>0</Rotation>
+		<ScaleType>BASED_ON_LENGTH</ScaleType>
+		<ModelLength>10</ModelLength>
+		<LengthUnits>METER</LengthUnits>
+		<Scale>10</Scale>
+		<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+	</ScaleRuler>
+	<CurrentLevel>1759844514975</CurrentLevel>
+	<Variables xmlns:al="http://anylogic.com"/>
+	<Dependences>
+		<Link SourceId="1759860545782" TargetId="1759860618124" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>80</X>
+				<Y>60</Y>
+			</Direction>
+			<Id>1759860641363</Id>
+			<Name><![CDATA[seatCapacity - availableSeats]]></Name>
+			<X>80</X>
+			<Y>130</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759844620436" TargetId="1759860618124" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-110</X>
+				<Y>80</Y>
+			</Direction>
+			<Id>1759860650067</Id>
+			<Name><![CDATA[operationalFleet - availableSeats]]></Name>
+			<X>270</X>
+			<Y>110</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759860618124" TargetId="1759860763025" Polarity="null">
+			<Height>-23.78</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>210</X>
+				<Y>0</Y>
+			</Direction>
+			<Id>1759860814652</Id>
+			<Name><![CDATA[availableSeats - ASK]]></Name>
+			<X>160</X>
+			<Y>190</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759860845134" TargetId="1759860763025" Polarity="null">
+			<Height>-23.757</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>250</X>
+				<Y>-60</Y>
+			</Direction>
+			<Id>1759860869840</Id>
+			<Name><![CDATA[flightDistance - ASK]]></Name>
+			<X>120</X>
+			<Y>250</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759861094864" TargetId="1759861094870" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>280</X>
+				<Y>-80</Y>
+			</Direction>
+			<Id>1759861105428</Id>
+			<Name><![CDATA[passengerDemand - RPK]]></Name>
+			<X>100</X>
+			<Y>390</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759861094867" TargetId="1759861094870" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>260</X>
+				<Y>-10</Y>
+			</Direction>
+			<Id>1759861107700</Id>
+			<Name><![CDATA[fractionalMarketShare - RPK]]></Name>
+			<X>120</X>
+			<Y>320</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759860845134" TargetId="1759861094870" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>260</X>
+				<Y>60</Y>
+			</Direction>
+			<Id>1759861126092</Id>
+			<Name><![CDATA[flightDistance - RPK]]></Name>
+			<X>120</X>
+			<Y>250</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759861094870" TargetId="1759861094873" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>160</X>
+				<Y>-50</Y>
+			</Direction>
+			<Id>1759861392226</Id>
+			<Name><![CDATA[RPK - loadFactor]]></Name>
+			<X>380</X>
+			<Y>310</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759860763025" TargetId="1759861094873" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>170</X>
+				<Y>70</Y>
+			</Direction>
+			<Id>1759861427113</Id>
+			<Name><![CDATA[ASK - loadFactor]]></Name>
+			<X>370</X>
+			<Y>190</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759862271641" TargetId="1759863357292" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>270</X>
+				<Y>-60</Y>
+			</Direction>
+			<Id>1759863377738</Id>
+			<Name><![CDATA[baseTicketFare - ticketRevenue]]></Name>
+			<X>110</X>
+			<Y>480</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759861094864" TargetId="1759863357292" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>280</X>
+				<Y>30</Y>
+			</Direction>
+			<Id>1759863382471</Id>
+			<Name><![CDATA[passengerDemand - ticketRevenue]]></Name>
+			<X>100</X>
+			<Y>390</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759861094867" TargetId="1759863357292" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>260</X>
+				<Y>100</Y>
+			</Direction>
+			<Id>1759863457529</Id>
+			<Name><![CDATA[fractionalMarketShare - ticketRevenue]]></Name>
+			<X>120</X>
+			<Y>320</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759904454229" TargetId="1759904507663" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>10</X>
+				<Y>-80</Y>
+			</Direction>
+			<Id>1759904489921</Id>
+			<Name><![CDATA[operationalExpense - TOC]]></Name>
+			<X>740</X>
+			<Y>570</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759904478727" TargetId="1759904507663" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-280</X>
+				<Y>-80</Y>
+			</Direction>
+			<Id>1759904529779</Id>
+			<Name><![CDATA[<operationalFleet> - TOC]]></Name>
+			<X>1030</X>
+			<Y>570</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759904507663" TargetId="1759904406972" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-120</X>
+				<Y>-60</Y>
+			</Direction>
+			<Id>1759904574430</Id>
+			<Name><![CDATA[TOC - cost]]></Name>
+			<X>750</X>
+			<Y>490</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759863357292" TargetId="1759905100725" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>130</X>
+				<Y>-20</Y>
+			</Direction>
+			<Id>1759905113316</Id>
+			<Name><![CDATA[ticketRevenue - profit]]></Name>
+			<X>380</X>
+			<Y>420</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759904406972" TargetId="1759905100725" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-120</X>
+				<Y>-30</Y>
+			</Direction>
+			<Id>1759905118942</Id>
+			<Name><![CDATA[cost - profit]]></Name>
+			<X>630</X>
+			<Y>430</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759904478727" TargetId="1759908250762" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-130</X>
+				<Y>-80</Y>
+			</Direction>
+			<Id>1759905557005</Id>
+			<Name><![CDATA[<operationalFleet> - distanceRun]]></Name>
+			<X>1030</X>
+			<Y>570</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759905329403" TargetId="1759908250762" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-130</X>
+				<Y>30</Y>
+			</Direction>
+			<Id>1759905562872</Id>
+			<Name><![CDATA[<flightDistance> - distanceRun]]></Name>
+			<X>1030</X>
+			<Y>460</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759905227922" TargetId="1759908731693" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-190</X>
+				<Y>-50</Y>
+			</Direction>
+			<Id>1759905565568</Id>
+			<Name><![CDATA[fuelConsumptionPerKm - perKmFuelCost]]></Name>
+			<X>1040</X>
+			<Y>400</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759905458070" TargetId="1759908731693" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-190</X>
+				<Y>-10</Y>
+			</Direction>
+			<Id>1759908503515</Id>
+			<Name><![CDATA[unitFuelCost - perKmFuelCost]]></Name>
+			<X>1040</X>
+			<Y>360</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759908250762" TargetId="1759905508046" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-120</X>
+				<Y>-70</Y>
+			</Direction>
+			<Id>1759912863930</Id>
+			<Name><![CDATA[distanceRun - FC]]></Name>
+			<X>900</X>
+			<Y>490</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759908731693" TargetId="1759905508046" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-70</X>
+				<Y>70</Y>
+			</Direction>
+			<Id>1759912867026</Id>
+			<Name><![CDATA[perKmFuelCost - FC]]></Name>
+			<X>850</X>
+			<Y>350</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+		<Link SourceId="1759905508046" TargetId="1759904406972" Polarity="null">
+			<Height>20.0</Height>
+			<PolarityType>NONE</PolarityType>
+			<PolarityCustomChar>x</PolarityCustomChar>
+			<PolarityPosition>0.95</PolarityPosition>
+			<Direction>
+				<X>-150</X>
+				<Y>10</Y>
+			</Direction>
+			<Id>1759912976936</Id>
+			<Name><![CDATA[FC - cost]]></Name>
+			<X>780</X>
+			<Y>420</Y>
+			<Label>
+				<X>40</X>
+				<Y>-50</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<Color>-11832691</Color>
+			<LineWidth>1</LineWidth>
+			<Delay>false</Delay>
+		</Link>
+	</Dependences>
+	<Events xmlns:al="http://anylogic.com"/>
+	<Functions xmlns:al="http://anylogic.com"/>
+	<ContainerLinks>
+		<ContainerLink>
+			<Id>1759851447454</Id>
+			<Name><![CDATA[main]]></Name>
+			<X>50</X>
+			<Y>-100</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>false</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>true</ShowLabel>
+			<ActiveObjectClass>
+				<PackageName>abs_lh_production_IEEEAccess_v2</PackageName>
+				<ClassName>Main</ClassName>
+			</ActiveObjectClass>
+		</ContainerLink>
+	</ContainerLinks>
+	<Presentation>
+		<Level>
+			<Id>1759844514975</Id>
+			<Name><![CDATA[level]]></Name>
+			<X>0</X>
+			<Y>0</Y>
+			<Label>
+				<X>10</X>
+				<Y>0</Y>
+			</Label>
+			<PublicFlag>true</PublicFlag>
+			<PresentationFlag>true</PresentationFlag>
+			<ShowLabel>false</ShowLabel>
+			<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+			<Z>0</Z>
+			<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+			<Presentation xmlns:al="http://anylogic.com"/>
+		</Level>
+	</Presentation>
+</ActiveObjectClass>
