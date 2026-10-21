@@ -260,7 +260,7 @@
 		<ShowLabel>true</ShowLabel>
 		<Properties External="false" Constant="true" Array="false">
 			<Formula>0</Formula>
-			<Value>100</Value>
+			<Value>main.baseElectricityPrice</Value>
 			<Color>-4073239</Color>
 		</Properties>
 	</Variable>
@@ -278,8 +278,8 @@
 		<ShowLabel>true</ShowLabel>
 		<Properties External="false" Constant="false" Array="false">
 			<Formula>
-electricityBasePrice*(demandSupplyRatio/activeBaseLF)
-
+//electricityBasePrice*(demandSupplyRatio/activeBaseLF)
+electricityBasePrice
 
 // if the ratio falls below 0.8 it returns 0.8 else the actual ratio
 
@@ -355,8 +355,8 @@ electricityBasePrice*(demandSupplyRatio/activeBaseLF)
 		<ShowLabel>true</ShowLabel>
 		<Properties External="false" Constant="false" Array="false">
 			<Formula>//hydrogenBasePrice*demandSupplyRatio_H2
-limitMax(hydrogenBasePrice*demandSupplyRatio_H2, 3*hydrogenBasePrice)
-</Formula>
+//limitMax(hydrogenBasePrice*demandSupplyRatio_H2, 3*hydrogenBasePrice)
+hydrogenBasePrice</Formula>
 			<Value>0</Value>
 			<Color>-4073239</Color>
 		</Properties>

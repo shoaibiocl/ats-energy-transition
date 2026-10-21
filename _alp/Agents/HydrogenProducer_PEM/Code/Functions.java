@@ -76,8 +76,8 @@ double sales_kg = Math.min(actualProduction_kg, demand_kg);
 // Calculates revenue based on what was actually sold.
 //traceln("Sales kg "+sales_kg);
 //traceln("Revenue : "+ (sales_kg * hydrogenPrice_per_kg));
-return sales_kg * main.energyCoordinator.hydrogenPrice;
-//return sales_kg * (1+profitMargin) * cost_per_kg ;
+//return sales_kg * main.energyCoordinator.hydrogenPrice;
+return sales_kg * (1+profitMargin) * cost_per_kg ;
 /*ALCODEEND*/}
 
 double expandCapacity()

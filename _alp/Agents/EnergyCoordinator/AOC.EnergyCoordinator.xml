@@ -130,17 +130,17 @@
 			<LineWidth>1</LineWidth>
 			<Delay>false</Delay>
 		</Link>
-		<Link SourceId="1753100680432" TargetId="1753100656824" Polarity="null">
+		<Link SourceId="1753100680432" Polarity="null">
 			<Height>30.864</Height>
 			<PolarityType>NONE</PolarityType>
 			<PolarityCustomChar>x</PolarityCustomChar>
 			<PolarityPosition>0.95</PolarityPosition>
 			<Direction>
 				<X>30</X>
-				<Y>-90</Y>
+				<Y>-50</Y>
 			</Direction>
 			<Id>1753100688652</Id>
-			<Name><![CDATA[demandSupplyRatio - electricityPrice]]></Name>
+			<Name><![CDATA[demandSupplyRatio - ]]></Name>
 			<X>210</X>
 			<Y>290</Y>
 			<Label>
@@ -178,17 +178,17 @@
 			<LineWidth>1</LineWidth>
 			<Delay>false</Delay>
 		</Link>
-		<Link SourceId="1758656329816" TargetId="1758656344984" Polarity="null">
+		<Link SourceId="1758656329816" Polarity="null">
 			<Height>20.0</Height>
 			<PolarityType>NONE</PolarityType>
 			<PolarityCustomChar>x</PolarityCustomChar>
 			<PolarityPosition>0.95</PolarityPosition>
 			<Direction>
-				<X>-40</X>
-				<Y>-70</Y>
+				<X>-10</X>
+				<Y>-60</Y>
 			</Direction>
 			<Id>1758656358988</Id>
-			<Name><![CDATA[demandSupplyRatio_H2 - hydrogenPrice]]></Name>
+			<Name><![CDATA[demandSupplyRatio_H2 - ]]></Name>
 			<X>280</X>
 			<Y>460</Y>
 			<Label>
@@ -202,17 +202,17 @@
 			<LineWidth>1</LineWidth>
 			<Delay>false</Delay>
 		</Link>
-		<Link SourceId="1792523357034" TargetId="1753100656824" Polarity="null">
+		<Link SourceId="1792523357034" Polarity="null">
 			<Height>20.0</Height>
 			<PolarityType>NONE</PolarityType>
 			<PolarityCustomChar>x</PolarityCustomChar>
 			<PolarityPosition>0.95</PolarityPosition>
 			<Direction>
-				<X>-140</X>
-				<Y>-40</Y>
+				<X>-110</X>
+				<Y>-30</Y>
 			</Direction>
 			<Id>1761930010063</Id>
-			<Name><![CDATA[activeBaseLF - electricityPrice]]></Name>
+			<Name><![CDATA[activeBaseLF - ]]></Name>
 			<X>380</X>
 			<Y>240</Y>
 			<Label>

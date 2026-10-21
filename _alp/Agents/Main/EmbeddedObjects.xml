@@ -255,6 +255,9 @@
 			<Parameter>
 				<Name><![CDATA[forecast_period]]></Name>
 			</Parameter>
+			<Parameter>
+				<Name><![CDATA[profitMargin]]></Name>
+			</Parameter>
 		</Parameters>
 		<ReplicationFlag>false</ReplicationFlag>
 		<Replication Class="CodeValue">
