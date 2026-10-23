@@ -4063,7 +4063,8 @@ insertInto(es)
   			es.electricity_max_lf,
   			es.electricity_average_lf,
   			es.electricity_min,
-  			es.years_to_transition_ats)
+  			es.years_to_transition_ats,
+  			es.profit_margin)
   .values(root.yearsToTransition, 
   		  root.timeToCapacityExpansion,
   		  root.hydrogenSplitOtherSectors,
@@ -4080,7 +4081,8 @@ insertInto(es)
   	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMax(),
  	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMean(),
   	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMin(),
-  	      root.yearsToTransitionATS  	      )
+  	      root.yearsToTransitionATS,
+  	      root.profitMargin  	      )
   	      .execute();</AfterSimulationRunCode>
 		<SeedValue>1</SeedValue>
 		<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -4301,11 +4303,20 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1792618986305</Id>
-			<Type><![CDATA[FIXED]]></Type>
+			<Type><![CDATA[RANGE]]></Type>
+			<From Class="CodeValue">
+				<Code><![CDATA[0.1]]></Code>
+			</From>
+			<To Class="CodeValue">
+				<Code><![CDATA[0.21]]></Code>
+			</To>
+			<Step Class="CodeValue">
+				<Code><![CDATA[0.05]]></Code>
+			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1792619117783</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<From Class="CodeValue">
 				<Code><![CDATA[50]]></Code>
 			</From>
