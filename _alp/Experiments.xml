@@ -4162,7 +4162,7 @@ insertInto(es)
 			<Id>1762251729912</Id>
 			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
-				<Code><![CDATA[0.6]]></Code>
+				<Code><![CDATA[0.3]]></Code>
 			</Expression>
 			<From Class="CodeValue">
 				<Code><![CDATA[0.30]]></Code>
@@ -4194,7 +4194,7 @@ insertInto(es)
 			<Id>1762251796097</Id>
 			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
-				<Code><![CDATA[25]]></Code>
+				<Code><![CDATA[35]]></Code>
 			</Expression>
 			<From Class="CodeValue">
 				<Code><![CDATA[25]]></Code>
@@ -4212,12 +4212,12 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762252865048</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<From Class="CodeValue">
 				<Code><![CDATA[450000]]></Code>
 			</From>
 			<To Class="CodeValue">
-				<Code><![CDATA[13950000]]></Code>
+				<Code><![CDATA[1350000]]></Code>
 			</To>
 			<Step Class="CodeValue">
 				<Code><![CDATA[900000]]></Code>
@@ -4225,18 +4225,18 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762252883197</Id>
-			<Type><![CDATA[FIXED]]></Type>
+			<Type><![CDATA[RANGE]]></Type>
 			<Expression Class="CodeValue">
-				<Code><![CDATA[50_000]]></Code>
+				<Code><![CDATA[10_000]]></Code>
 			</Expression>
 			<From Class="CodeValue">
 				<Code><![CDATA[30000]]></Code>
 			</From>
 			<To Class="CodeValue">
-				<Code><![CDATA[90000]]></Code>
+				<Code><![CDATA[100000]]></Code>
 			</To>
 			<Step Class="CodeValue">
-				<Code><![CDATA[30000]]></Code>
+				<Code><![CDATA[5000]]></Code>
 			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
@@ -4266,7 +4266,7 @@ insertInto(es)
 				<Code><![CDATA[1500]]></Code>
 			</To>
 			<Step Class="CodeValue">
-				<Code><![CDATA[300]]></Code>
+				<Code><![CDATA[900]]></Code>
 			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
