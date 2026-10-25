@@ -4232,7 +4232,7 @@ insertInto(es)
 				<Code><![CDATA[10_000]]></Code>
 			</Expression>
 			<From Class="CodeValue">
-				<Code><![CDATA[30000]]></Code>
+				<Code><![CDATA[10000]]></Code>
 			</From>
 			<To Class="CodeValue">
 				<Code><![CDATA[100000]]></Code>
