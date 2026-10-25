@@ -4235,10 +4235,10 @@ insertInto(es)
 				<Code><![CDATA[10000]]></Code>
 			</From>
 			<To Class="CodeValue">
-				<Code><![CDATA[100000]]></Code>
+				<Code><![CDATA[1000000]]></Code>
 			</To>
 			<Step Class="CodeValue">
-				<Code><![CDATA[5000]]></Code>
+				<Code><![CDATA[10000]]></Code>
 			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
