@@ -4045,7 +4045,8 @@ insertInto(es)
   			es.starting_capital,
   			es.interest_rate,
   			es.fixed_opex,
-  			es.capex)
+  			es.capex,
+  			es.starting_capacity)
   .values(root.yearsToTransition, 
   		  root.timeToCapacityExpansion,
   		  root.hydrogenSplitOtherSectors,
@@ -4066,7 +4067,8 @@ insertInto(es)
   	      root.startingCapital,
   	      root.loanInterestRate,
   	      root.capexPerKW,
-  	      root.opexFixedPerKWPerYear  	      )
+  	      root.opexFixedPerKWPerYear ,
+  	      root.startingCapacity_KW 	      )
   	      .execute();</AfterSimulationRunCode>
 		<SeedValue>1</SeedValue>
 		<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
