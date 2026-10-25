@@ -4041,7 +4041,11 @@ insertInto(es)
   			es.electricity_max_lf,
   			es.electricity_average_lf,
   			es.electricity_min,
-  			es.years_to_transition_ats)
+  			es.years_to_transition_ats,
+  			es.starting_capital,
+  			es.interest_rate,
+  			es.fixed_opex,
+  			es.capex)
   .values(root.yearsToTransition, 
   		  root.timeToCapacityExpansion,
   		  root.hydrogenSplitOtherSectors,
@@ -4058,7 +4062,11 @@ insertInto(es)
   	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMax(),
  	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMean(),
   	      root.energyCoordinator.cordinator_electricityLoadFactor_dataset.getYMin(),
-  	      root.yearsToTransitionATS  	      )
+  	      root.yearsToTransitionATS,
+  	      root.startingCapital,
+  	      root.loanInterestRate,
+  	      root.capexPerKW,
+  	      root.opexFixedPerKWPerYear  	      )
   	      .execute();</AfterSimulationRunCode>
 		<SeedValue>1</SeedValue>
 		<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -4136,7 +4144,10 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762251726575</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
+			<Expression Class="CodeValue">
+				<Code><![CDATA[30]]></Code>
+			</Expression>
 			<From Class="CodeValue">
 				<Code><![CDATA[20]]></Code>
 			</From>
@@ -4149,7 +4160,7 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762251729912</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
 				<Code><![CDATA[0.6]]></Code>
 			</Expression>
@@ -4165,7 +4176,7 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762251772360</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
 				<Code><![CDATA[0.7]]></Code>
 			</Expression>
@@ -4181,7 +4192,7 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762251796097</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
 				<Code><![CDATA[25]]></Code>
 			</Expression>
@@ -4198,17 +4209,26 @@ insertInto(es)
 		<RangeVariationParamValue>
 			<Id>1762251847842</Id>
 			<Type><![CDATA[FIXED]]></Type>
-			<Expression Class="CodeValue">
-				<Code><![CDATA[1]]></Code>
-			</Expression>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762252865048</Id>
-			<Type><![CDATA[FIXED]]></Type>
+			<Type><![CDATA[RANGE]]></Type>
+			<From Class="CodeValue">
+				<Code><![CDATA[450000]]></Code>
+			</From>
+			<To Class="CodeValue">
+				<Code><![CDATA[13950000]]></Code>
+			</To>
+			<Step Class="CodeValue">
+				<Code><![CDATA[900000]]></Code>
+			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762252883197</Id>
 			<Type><![CDATA[FIXED]]></Type>
+			<Expression Class="CodeValue">
+				<Code><![CDATA[50_000]]></Code>
+			</Expression>
 			<From Class="CodeValue">
 				<Code><![CDATA[30000]]></Code>
 			</From>
@@ -4222,6 +4242,15 @@ insertInto(es)
 		<RangeVariationParamValue>
 			<Id>1762252896997</Id>
 			<Type><![CDATA[FIXED]]></Type>
+			<From Class="CodeValue">
+				<Code><![CDATA[0.06]]></Code>
+			</From>
+			<To Class="CodeValue">
+				<Code><![CDATA[0.11]]></Code>
+			</To>
+			<Step Class="CodeValue">
+				<Code><![CDATA[0.04]]></Code>
+			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762252939364</Id>
@@ -4230,6 +4259,15 @@ insertInto(es)
 		<RangeVariationParamValue>
 			<Id>1762252986296</Id>
 			<Type><![CDATA[FIXED]]></Type>
+			<From Class="CodeValue">
+				<Code><![CDATA[600]]></Code>
+			</From>
+			<To Class="CodeValue">
+				<Code><![CDATA[1500]]></Code>
+			</To>
+			<Step Class="CodeValue">
+				<Code><![CDATA[300]]></Code>
+			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762253004230</Id>
@@ -4238,6 +4276,15 @@ insertInto(es)
 		<RangeVariationParamValue>
 			<Id>1762253042751</Id>
 			<Type><![CDATA[FIXED]]></Type>
+			<From Class="CodeValue">
+				<Code><![CDATA[30]]></Code>
+			</From>
+			<To Class="CodeValue">
+				<Code><![CDATA[41]]></Code>
+			</To>
+			<Step Class="CodeValue">
+				<Code><![CDATA[10]]></Code>
+			</Step>
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762253100906</Id>
@@ -4245,7 +4292,7 @@ insertInto(es)
 		</RangeVariationParamValue>
 		<RangeVariationParamValue>
 			<Id>1762253117369</Id>
-			<Type><![CDATA[RANGE]]></Type>
+			<Type><![CDATA[FIXED]]></Type>
 			<Expression Class="CodeValue">
 				<Code><![CDATA[3]]></Code>
 			</Expression>
