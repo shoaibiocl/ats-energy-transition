@@ -1,18 +1,17 @@
 # ATS energy transition model
 
-AnyLogic agent-based model of the UK electricity and hydrogen system, used to assess hydrogen supply to the Air Transport System (ATS) under cross-sectoral competition. It accompanies the paper "Evaluating Hydrogen Transition of the Air Transport System under Cross-Sectoral Energy Competition". Version 1.0 matches the revised paper. Archived at [Zenodo DOI].
-
+AnyLogic agent-based model of the UK electricity and hydrogen system, used to assess hydrogen supply to the Air Transport System (ATS) under cross-sectoral competition. 
 ## Requirements
-- AnyLogic [version, edition: CONFIRM]
+- AnyLogic University/PLE
 
 ## Files
 - `ATS_Energy_Transition_ABM.alpx`: the model
-- [results file names: CONFIRM; rename `Book1.xlsx` or describe it here]
+- [results file name: `Book1.xlsx`]
 
 ## Reproducing the results
 1. Open the `.alpx` file in AnyLogic.
-2. Run experiment [name: CONFIRM] with the settings in Table S5 of the Supplementary Material (five two-level factors, 32 scenarios).
-3. Outputs are written to [location: CONFIRM].
+2. Run ParametersVariation_Average:Main experiment with the settings in Table S5 of the Supplementary Material.
+3. Outputs are written to the root folder.
 
 ## Where things are
 | Agent | What it does | Supplement section |
