@@ -6,7 +6,7 @@ AnyLogic agent-based model of the UK electricity and hydrogen system, used to as
 
 ## Files
 - `ATS_Energy_Transition_ABM.alpx`: the model
-- [results file name: `Book1.xlsx`]
+- `Book1.xlsx`
 
 ## Reproducing the results
 1. Open the `.alpx` file in AnyLogic.
