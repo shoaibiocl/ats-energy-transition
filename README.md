@@ -31,7 +31,7 @@ investment behaviour and grid constraints, not exogenous inputs.
 
 | Tool | Version | Used for |
 |---|---|---|
-| AnyLogic | University/PLE 8.9 | Simulation model |
+| AnyLogic | University/PLE 8.9 | Simulation experiments |
 | Minitab | 22 | Design of experiments, main- and interaction-effect analysis |
 
 > **Licensing note.** The model was built in AnyLogic University. The free
