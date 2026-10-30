@@ -1,4 +1,4 @@
-# Electricity–Hydrogen–Aviation Agent-Based Model (UK)
+# Electricity–Hydrogen–Aviation Agent-Based Model 
 
 Agent-based model of the UK energy transition used to assess whether the national
 energy system can supply hydrogen to the Air Transport System (ATS) at the required
